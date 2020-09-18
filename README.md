@@ -42,19 +42,17 @@ CSS-in-JS is a great tool, and I enjoy using framework-agnostic `css` paradigm s
 ### Features
 
 - Similar Emotion API (nesting, composition, etc.)
-- No required bundler settings
+- Bundler-agnostic
 - Framework-agnostic
 - Debugging
 - Isolated stores
-- Tagged templates
-- Media queries
+- Media queries (`@media`)
 - Extract CSS
-- Keyframes
+- Keyframes (`@keyframes`)
 
 ##### _To be implemented_
 
 - Merge duplicate/overwritten styles
-- Framework usage examples
 - Object styles
 - Convert tagged templates ⬌ object styles
 
@@ -62,11 +60,11 @@ CSS-in-JS is a great tool, and I enjoy using framework-agnostic `css` paradigm s
 
 #### `css(template,...props)`
 
-- `@returns {MagnosticStyle}`  Returns the style object
+- `@returns {MagnosticStyle}`  Style object with unique identifier
 
 The default `css` method expects a tagged template literal as input, which may include variables or other magnostic styles passed via placeholders `${}`.
 
-```js
+```jsx
 import {css} from 'magnostic'
 const style = css`
   color: blue;
@@ -98,9 +96,11 @@ console.log(style)        // 🠚 'css-de54d5'
 
 #### `keyframes(template,...props)`
 
+`@returns {MagnosticKeyframes}`  Keyframes object with unique identifier
+
 Similar to Emotion's `keyframes` method, the default `keyframes` method allows to explicitly register a CSS animation with an unique identifier, using a template literal as input.
 
-```js
+```jsx
 import {css, keyframes, extractCss} from 'magnostic'
 const slideIn = keyframes`
   from {
@@ -114,23 +114,26 @@ const slideIn = keyframes`
 console.log(`${slideIn}`)  // 🠚 'anim-yttaxx0b79'
 ```
 
-And then use the animation in a style
+Then, the animation can be used as a style rule.
 
-```js
+```jsx
 const slidingText = css`
   animation: ${slideIn} 1s ease infinite;
 `
 console.log(extractCss())
-// 🠚 '@keyframes anim-yttaxx0b79{from{left:100%;}to{left:0%;}}.css-71cew5o9e7{animation: anim-yttaxx0b79 1s ease infinite;}'
+/**
+ * 🠚 '@keyframes anim-yttaxx0b79{from{left:100%;}to{left:0%;}}
+ *  .css-71cew5o9e7{animation: anim-yttaxx0b79 1s ease infinite;}'
+ */
 ```
 
 #### `extractCss()`
 
-- `@returns {string}`  Returns generated CSS code, or an empty string if none style exists.
+- `@returns {string}`  Returns the generated CSS code
 
-Similar to `goober`'s `extractCss` method, this outputs generated CSS from all previous default `css` method calls.
+Similar to `goober`'s `extractCss` method, this outputs generated CSS from all previous default `css` and `keyframes` method calls.
 
-```js
+```jsx
 import {css, extractCss} from 'magnostic'
 const blueText = css`
   color: blue;
@@ -148,7 +151,7 @@ console.log(extractCss())
 
 magnostic does provide a default `css` method which pushes any generated style to a global store, but still allows anyone to create their own **stores**, which all provide **isolated methods** (`css`, `extractCss`, `keyframes`, etc.). This is particularly useful when creating _view-specific_ style rules and/or when trying to reduce bundle sizes.
 
-```js
+```jsx
 import {createStore} from 'magnostic'
 
 // Let's create a first store
