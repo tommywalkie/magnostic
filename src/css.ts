@@ -1,14 +1,6 @@
 import {compile, serialize, stringify} from 'stylis'
 import {customAlphabet} from 'nanoid'
 
-export type MagnosticClassName = {
-	(): string
-	className: string
-    styles: string
-    template: TemplateStringsArray
-    toString: () => string
-}
-
 const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz', 10)
 
 const format = (rendered: string, stringProps: string[]): string => {
@@ -26,24 +18,22 @@ const format = (rendered: string, stringProps: string[]): string => {
 
 export type MagnosticProp = MagnosticClassName | string | number | Function
 
-export const generateClassName = (
-    template: TemplateStringsArray,
-    ...props: MagnosticProp[]
-): MagnosticClassName => {
-    const _id = nanoid()
-    const classname = `css-${_id}`
-	const instance: MagnosticClassName = function () {return classname}
-    instance.className = classname
-    instance.template = template
-    const stringProps: string[] = []
-    const renderedProps: (string | undefined)[] = props.map((el: MagnosticProp) => {
-        if ((el as MagnosticClassName).template)
-            return `${(el as MagnosticClassName).template}\n`
-        stringProps.push(String(el))
-    })
-    const rendered = serialize(compile(`.${instance.className} { ${renderedProps} ${template} }`), stringify)
-    const computed = format(rendered, stringProps)
-    instance.styles = `${computed}`
-    instance.toString = () => String(instance.className)
-    return instance
+export class MagnosticClassName {
+	className: string
+    styles: string
+    template: TemplateStringsArray
+    constructor(template: TemplateStringsArray,...props: MagnosticProp[]) {
+        const _id = nanoid()
+        this.className = `css-${_id}`
+        this.template = template
+        const stringProps: string[] = []
+        const renderedProps: (string | undefined)[] = props.map((el: MagnosticProp) => {
+            if ((el as MagnosticClassName).template)
+                return `${(el as MagnosticClassName).template}\n`
+            stringProps.push(String(el))
+        })
+        const rendered = serialize(compile(`.${this.className} { ${renderedProps} ${template} }`), stringify)
+        this.styles = format(rendered, stringProps)
+    }
+    toString = (): string => this.className
 }

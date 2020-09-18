@@ -1,21 +1,19 @@
-import type {MagnosticClassName} from './'
-import {generateClassName} from './css'
+import type {MagnosticProp} from './css'
+import {MagnosticClassName} from './css'
 
 export class MagnosticStore {
     elements: MagnosticClassName[]
     constructor() {
         this.elements = []
     }
-    extractCss = (): string => {
-        return this.elements.map(
-            (className: MagnosticClassName): string => className.styles
-        ).join('')
-    }
+    extractCss = (): string => this.elements.map(
+        (className: MagnosticClassName): string => className.styles
+    ).join('')
     css = (
         template: TemplateStringsArray,
-        ...props: (MagnosticClassName | string | number | Function)[]
+        ...props: MagnosticProp[]
     ): MagnosticClassName => {
-        const className: MagnosticClassName = generateClassName(template, ...props)
+        const className: MagnosticClassName = new MagnosticClassName(template, ...props)
         this.elements.push(className)
         return className
     }

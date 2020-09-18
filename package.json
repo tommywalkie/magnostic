@@ -1,6 +1,6 @@
 {
   "name": "magnostic",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Opinionated bundler-agnostic lightweight CSS-in-JS utility",
   "keywords": [
     "css-in-js",
