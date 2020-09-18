@@ -1,6 +1,6 @@
 {
   "name": "magnostic",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Opinionated bundler-agnostic lightweight CSS-in-JS utility",
   "keywords": ["css-in-js", "framework-agnostic", "ssr", "css"],
   "repository": "https://github.com/tommywalkie/magnostic.git",
