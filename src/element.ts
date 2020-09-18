@@ -1,7 +1,9 @@
 import {compile, serialize, stringify} from 'stylis'
 import {MagnosticStyle} from './css'
 import {MagnosticKeyframes} from './keyframes'
-import {unique} from './unique'
+import {customAlphabet} from 'nanoid'
+
+const uniqueId: () => string = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz', 10)
 
 export type MagnosticProp = MagnosticElement | string | number
 export enum MagnosticElementTypeAlias {
@@ -40,7 +42,7 @@ export class MagnosticElement {
 	styles: string
 	template: TemplateStringsArray
 	constructor(settings: MagnosticElementTypeSettings, template: TemplateStringsArray, ...props: MagnosticProp[]) {
-		const _id = unique()
+		const _id = uniqueId()
 		const {type, selector, prefix} = settings
 		this.type = type
 		this.className = `${prefix}-${_id}`
