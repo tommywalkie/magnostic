@@ -1,6 +1,6 @@
 {
   "name": "magnostic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Opinionated bundler-agnostic lightweight CSS-in-JS utility",
   "repository": "https://github.com/tommywalkie/magnostic.git",
   "author": "tommywalkie <tommywalkie@gmail.com>",
@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "build": "tsup src/**/*.ts --format esm,cjs --minify --dts",
-    "test": "npm run build && uvu -r ts-node/register tests"
+    "test": "npm run build && uvu -r ts-node/register tests",
+    "pack": "npm pack --dry-run"
   },
   "dependencies": {
     "nanoid": "^3.1.12",

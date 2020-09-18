@@ -2,6 +2,22 @@
 
 magnostic is an opinionated bundler-agnostic lightweight CSS-in-JS utility using `css` paradigm.
 
+- [Install](https://github.com/tommywalkie/magnostic#install)
+- [Why another CSS-in-JS library ?](https://github.com/tommywalkie/magnostic#why-another-css-in-js-library-)
+  - [Some issues with existing libraries](https://github.com/tommywalkie/magnostic#some-issues-with-existing-libraries)
+- [Features](https://github.com/tommywalkie/magnostic#features)
+- [API](https://github.com/tommywalkie/magnostic#api)
+  - [`css(template,...props)`](https://github.com/tommywalkie/magnostic#csstemplateprops)
+  - [`extractCss()`](https://github.com/tommywalkie/magnostic#extractcss)
+  - [`createStore()`](https://github.com/tommywalkie/magnostic#createstore)
+- [Contributing](https://github.com/tommywalkie/magnostic#contributing)
+
+### Install
+
+```bash
+npm install magnostic
+```
+
 ### Why another CSS-in-JS library ?
 
 I'm using [Emotion](https://github.com/emotion-js/emotion) on a daily basis in professional and hobby React, Svelte and Vue projects. 
@@ -41,9 +57,9 @@ CSS-in-JS is a great tool, and I enjoy using framework-agnostic `css` paradigm s
 
 ### API
 
-- [`css(template,...props)`]()
-- [`extractCss()`]()
-- [`createStore()`]()
+- [`css(template,...props)`](https://github.com/tommywalkie/magnostic#csstemplateprops)
+- [`extractCss()`](https://github.com/tommywalkie/magnostic#extractcss)
+- [`createStore()`](https://github.com/tommywalkie/magnostic#createstore)
 
 #### `css(template,...props)`
 
