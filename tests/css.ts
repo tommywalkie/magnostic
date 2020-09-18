@@ -51,21 +51,23 @@ const doubleMediaQueryTest = css`
     }
 `
 
-$('should have a \'styles\' attribute with style rules', async () => {
-	ok(isMatch(redText.styles, '.css-(*){color:red;}'))
-})
-
 $('should output className when strigified', async () => {
     ok(isMatch(`${redText}`, 'css-(*)'))
     ok(isMatch(redText.toString(), 'css-(*)'))
 })
 
+$('should have a \'styles\' attribute with style rules and classname', async () => {
+	is(redText.styles, `.${redText}{color:red;}`)
+})
+
 $('should support nested selectors', async () => {
-	ok(isMatch(blueTextContainer.styles, '.css-(*)>p{color:blue;}'))
+    const { styles } = blueTextContainer
+	is(styles, `.${blueTextContainer}>p{color:blue;}`)
 })
 
 $('should support nested selectors without breaking root style rules', async () => {
-	ok(isMatch(spacedBlueTextContainer.styles, '.css-(*){padding:10px;}.css-(*)>p{color:blue;}'))
+    const { styles } = spacedBlueTextContainer
+	is(styles,`.${spacedBlueTextContainer}{padding:10px;}.${spacedBlueTextContainer}>p{color:blue;}`)
 })
 
 $('should support composition', async () => {
