@@ -1,16 +1,19 @@
-import type {MagnosticClassName} from './'
 import {compile, serialize, stringify} from 'stylis'
 import {customAlphabet} from 'nanoid'
+
+export type MagnosticClassName = {
+	(): string
+	className: string
+    styles: string
+    template: TemplateStringsArray
+    toString: () => string
+}
 
 const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz', 10)
 
 const format = (rendered: string, stringProps: string[]): string => {
     let index: number = -1
-    return rendered.replace(/\:\,\;/gm, (occurance) => {
-        index = index + 1
-        return `:${stringProps[index]}${occurance.slice(2,occurance.length - 1)};`
-    })
-    .replace(/\:\,[^;]{0,}\;/gm, (occurance) => {
+    return rendered.replace(/\:\,[^;]{0,}\;/gm, (occurance) => {
         index = index + 1
         return `:${stringProps[index]}${occurance.slice(2,occurance.length - 1)};`
     })
@@ -21,20 +24,22 @@ const format = (rendered: string, stringProps: string[]): string => {
     .replace(/\,+/, '')
 }
 
+export type MagnosticProp = MagnosticClassName | string | number | Function
+
 export const generateClassName = (
     template: TemplateStringsArray,
-    ...props: (MagnosticClassName | string | number | Function)[]
+    ...props: MagnosticProp[]
 ): MagnosticClassName => {
     const _id = nanoid()
-	const instance: MagnosticClassName = function () {return `css-${_id}`}
-    instance.className = `css-${_id}`
+    const classname = `css-${_id}`
+	const instance: MagnosticClassName = function () {return classname}
+    instance.className = classname
     instance.template = template
     const stringProps: string[] = []
-    const renderedProps = props.map((el: MagnosticClassName | string | number | Function) => {
+    const renderedProps: (string | undefined)[] = props.map((el: MagnosticProp) => {
         if ((el as MagnosticClassName).template)
             return `${(el as MagnosticClassName).template}\n`
-        else
-            stringProps.push(String(el))
+        stringProps.push(String(el))
     })
     const rendered = serialize(compile(`.${instance.className} { ${renderedProps} ${template} }`), stringify)
     const computed = format(rendered, stringProps)

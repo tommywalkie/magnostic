@@ -1,20 +1,13 @@
+import type {MagnosticClassName, MagnosticProp} from './css'
 import {MagnosticStore} from './store'
-
-export type MagnosticClassName = {
-	(): string
-	className: string
-    styles: string
-    template: TemplateStringsArray
-    toString: () => string
-}
 
 const globalStore: MagnosticStore = new MagnosticStore()
 
 export const css = (
     template: TemplateStringsArray,
-    ...props: (MagnosticClassName | string | number | Function)[]
+    ...props: MagnosticProp[]
 ): MagnosticClassName => globalStore.css(template, ...props)
 
-export type { MagnosticStore }
+export type { MagnosticClassName, MagnosticStore, MagnosticProp }
 export const extractCss = (): string => globalStore.extractCss()
 export const createStore = (): MagnosticStore => new MagnosticStore()
