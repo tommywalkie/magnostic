@@ -1,3 +1,5 @@
+![status](https://img.shields.io/github/workflow/status/tommywalkie/magnostic/test) [![npm](https://img.shields.io/npm/v/magnostic)](https://www.npmjs.com/package/magnostic) [![npm bundle size](https://img.shields.io/bundlephobia/min/magnostic)](https://bundlephobia.com/result?p=magnostic@latest) ![dependency count](https://badgen.net/bundlephobia/dependency-count/magnostic) ![license](https://badgen.net/npm/license/magnostic)
+
 # magnostic 🧲
 
 magnostic is an opinionated bundler-agnostic lightweight CSS-in-JS utility using `css` paradigm.
@@ -24,7 +26,7 @@ I'm using [Emotion](https://github.com/emotion-js/emotion) on a daily basis in p
 
 CSS-in-JS is a great tool, and I enjoy using framework-agnostic `css` paradigm since it can be used in basically any framework. But once you start using _Server-Side Rendering_, it can become a mess, especially if not using Babel or React.
 
-##### Some issues with existing libraries
+#### Some issues with existing libraries
 
 <sup>_<u>Notice</u>: Following mentionned snippets are subject to change._</sup>
 
