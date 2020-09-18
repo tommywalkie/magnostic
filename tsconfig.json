@@ -1,21 +1,21 @@
 {
     "compilerOptions": {
-      "moduleResolution": "node",
-      "target": "ES5",
-      "module": "CommonJS",
-      "strict": true,
-      "sourceMap": true,
-      "declaration": true,
-      "allowSyntheticDefaultImports": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "declarationDir": "types",
-      "outDir": "dist",
-      "typeRoots": [
-        "node_modules/@types"
-      ]
+        "moduleResolution": "node",
+        "target": "ES5",
+        "module": "CommonJS",
+        "strict": true,
+        "sourceMap": true,
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declarationDir": "types",
+        "outDir": "dist",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "include": [
-      "src"
+        "src"
     ]
-  }
+}

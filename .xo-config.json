@@ -1,0 +1,10 @@
+{
+    "ignores": [ "node_modules", "dist", "examples" ],
+    "semicolon": false,
+    "rules": {
+        "curly": "off",
+        "unicorn/filename-case": "off",
+        "@typescript-eslint/restrict-template-expressions": "off"
+    },
+    "overrides": []
+}

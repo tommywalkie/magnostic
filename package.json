@@ -1,6 +1,6 @@
 {
   "name": "magnostic",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Opinionated bundler-agnostic lightweight CSS-in-JS utility",
   "keywords": [
     "css-in-js",
@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "build": "rimraf dist/**/* && tsup src/**/*.ts --format esm,cjs --minify --dts",
-    "test": "npm run build && uvu -r ts-node/register tests"
+    "test": "npm run build && uvu -r ts-node/register tests",
+    "lint": "xo \"./(src|tests)/**/*.(js|ts)\" --fix"
   },
   "dependencies": {
     "nanoid": "^3.1.12",
@@ -30,11 +31,13 @@
     "@types/picomatch": "^2.2.1",
     "@types/stylis": "^4.0.0",
     "esbuild": "^0.7.1",
+    "eslint-config-xo-typescript": "^0.32.0",
     "picomatch": "^2.2.2",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "tsup": "^3.7.0",
     "typescript": "^4.0.2",
-    "uvu": "^0.3.3"
+    "uvu": "^0.3.3",
+    "xo": "^0.33.1"
   }
 }
