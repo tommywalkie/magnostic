@@ -1,4 +1,4 @@
-![status](https://img.shields.io/github/workflow/status/tommywalkie/magnostic/test) [![npm](https://img.shields.io/npm/v/magnostic)](https://www.npmjs.com/package/magnostic) [![npm bundle size](https://img.shields.io/bundlephobia/min/magnostic)](https://bundlephobia.com/result?p=magnostic@latest) ![dependency count](https://badgen.net/bundlephobia/dependency-count/magnostic) ![license](https://badgen.net/npm/license/magnostic)
+![status](https://img.shields.io/github/workflow/status/tommywalkie/magnostic/main?label=build) [![npm](https://img.shields.io/npm/v/magnostic)](https://www.npmjs.com/package/magnostic) [![npm bundle size](https://img.shields.io/bundlephobia/min/magnostic)](https://bundlephobia.com/result?p=magnostic@latest) ![dependency count](https://badgen.net/bundlephobia/dependency-count/magnostic) ![license](https://badgen.net/npm/license/magnostic)
 
 # magnostic 🧲
 
