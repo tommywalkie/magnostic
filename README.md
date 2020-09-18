@@ -80,7 +80,7 @@ console.log(style)
  * 🠚 [Function: MagnosticClassName] : {
  *     className: 'css-ds3r7jufak',
  *     template: [ '\n  color: blue;\n' ],
- *     styles: '.css-6lh7rbvhxo{color:blue;}',
+ *     styles: '.css-ds3r7jufak{color:blue;}',
  *     toString: [Function]
  *  }
  */
