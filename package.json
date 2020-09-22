@@ -1,6 +1,6 @@
 {
   "name": "magnostic",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Opinionated bundler-agnostic lightweight CSS-in-JS utility",
   "keywords": [
     "css-in-js",
@@ -12,13 +12,14 @@
   "author": "tommywalkie <tommywalkie@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "esm/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist/**/* && tsup src/**/*.ts --format esm,cjs --minify --dts",
+    "bootstrap": "lerna bootstrap --ignore-prepublish",
+    "build": "rimraf dist/**/* && tsup src/**/*.ts --format esm,cjs --minify --dts --legacy-output",
     "test": "npm run build && uvu -r ts-node/register tests",
     "lint": "xo \"./(src|tests)/**/*.(js|ts)\" --fix"
   },
@@ -32,6 +33,7 @@
     "@types/stylis": "^4.0.0",
     "esbuild": "^0.7.1",
     "eslint-config-xo-typescript": "^0.32.0",
+    "lerna": "^3.22.1",
     "picomatch": "^2.2.2",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",

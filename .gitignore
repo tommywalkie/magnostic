@@ -1,10 +1,22 @@
 # Dependency directories
 node_modules
-examples/**/node_modules
 
 # TypeScript / ESBuild build output
 dist
 
 # Lock files
 package-lock.json
+**/package-lock.json
 yarn.lock
+**/yarn.lock
+
+# Work-in-progress framework usage examples
+examples/charge
+examples/elderjs
+examples/gatsby
+examples/junglejs
+examples/nextjs
+examples/nuxt
+examples/plenti
+examples/react-static
+examples/sapper

@@ -3,3 +3,4 @@ tests
 src
 tsconfig.json
 .xo-config.json
+lerna.json
